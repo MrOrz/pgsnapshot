@@ -18,7 +18,7 @@ export function query(location, distance) {
     v6: 0,
   };
 
-  console.log(`-- curl "${PkgetURL}?${stringify(params)}" -H "X-Requested-With: XMLHttpRequest" -H "Referer: https://pkget.com/" --`);
+  // console.debug(`curl "${PkgetURL}?${stringify(params)}" -H "X-Requested-With: XMLHttpRequest" -H "Referer: https://pkget.com/" --`);
 
   return request({
     url: `${PkgetURL}?${stringify(params)}`,
