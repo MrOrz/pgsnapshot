@@ -1,2 +1,2 @@
 # pgsnapshot
-snapshots from pgget
+snapshots from pkget
