@@ -1,5 +1,5 @@
-import {S3} from 'aws-sdk';
-import {query} from './pkget';
+const {S3} = require('aws-sdk');
+const {query} = require('./pkget');
 
 const s3 = new S3();
 

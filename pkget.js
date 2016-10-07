@@ -1,13 +1,13 @@
 // https://github.com/yhsiang/pokemon-go-query/blob/master/pkget.js
 
-import request from "request-promise";
-import geolib from "geolib";
-import { stringify } from "querystring";
-import pokemon from "pokemon";
+const request = require('request-promise');
+const geolib = require('geolib');
+const { stringify } = require('querystring');
+const pokemon = require('pokemon');
 
-const PkgetURL = "https://pkget.com/pkm333.ashx"
+const PkgetURL = "https://pkget.com/pkm333.ashx";
 
-export function query(location, distance) {
+exports.query = function query(location, distance) {
   // const [min, max] = geolib.getBoundsOfDistance(location, distance);
   const params = {
     v1: 111,
@@ -49,4 +49,4 @@ export function query(location, distance) {
       });
       return pokemons;
     })
-}
+};
