@@ -1,5 +1,6 @@
 const stringify = require('csv-stringify');
 const moment = require('moment');
+const upload = require('./upload');
 
 const TITLE_ROW = [
   'uuid',
@@ -32,7 +33,6 @@ function processToCSV(records) {
         reject(err);
         return;
       }
-
       resolve(output);
     });
   })
@@ -56,9 +56,18 @@ if(require.main === module) {
   }
 
   processToCSV(records).then(output => {
-    fs.writeFileSync(path.join(
-      path.dirname(jsonFilePath),
-      `${path.basename(jsonFilePath, '.json')}.csv`
-    ), output);
+    // fs.writeFileSync(path.join(
+    //   path.dirname(jsonFilePath),
+    //   `${path.basename(jsonFilePath, '.json')}.csv`
+    // ), output);
+    return upload(output);
+  }).then(result => {
+    console.log({
+      input: jsonFilePath,
+      result
+    });
+    process.exit(0);
+  }).catch(err => {
+    throw err;
   });
 }

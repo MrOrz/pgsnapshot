@@ -74,16 +74,14 @@ function auth() {
   oauth2Client.setCredentials(tokens);
 
   return new Promise((resolve, reject) => {
-    oauth2Client.getAccessToken((err, newTokens) => {
+    oauth2Client.getAccessToken(err => {
       if(err) {
         reject(err);
         return;
       }
 
-
-      oauth2Client.setCredentials(newTokens);
-      writeCredential(newTokens);
-      resolve({client: oauth2Client, tokens: newTokens});
+      writeCredential(oauth2Client.credentials);
+      resolve({client: oauth2Client, tokens: oauth2Client.credentials});
     });
   })
 }
