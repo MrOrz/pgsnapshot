@@ -1,3 +1,5 @@
+require('./handle_rejection');
+
 const {S3} = require('aws-sdk');
 const {query} = require('./pkget');
 
